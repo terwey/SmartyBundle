@@ -100,7 +100,9 @@ class SmartyEngine implements EngineInterface
          *   '/path/to/template_dir');
          */
         foreach ($options as $property => $value) {
-            $this->smarty->{$this->smartyPropertyToSetter($property)}($value);
+            if ($property !== 'use_include_path') {
+                $this->smarty->{$this->smartyPropertyToSetter($property)}($value);
+            }
         }
 
         /**
